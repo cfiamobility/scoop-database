@@ -38,6 +38,14 @@ CREATE TABLE scoop.socialMedia (
     PRIMARY KEY (socialMediaId)
 );
 
+/* This table contains a list of social media */
+CREATE TABLE scoop.positions (
+	positionId serial,
+	positionName VARCHAR(255),
+	
+    PRIMARY KEY (positionId)
+);
+
 /* This table contains the names (in French and English) of the buildings that CFIA servants work in/at */
 CREATE TABLE scoop.buildings(
 	buildingId serial,
@@ -70,12 +78,13 @@ CREATE TABLE scoop.users(
 	firstName VARCHAR(255),
 	lastName VARCHAR(255),
 	email VARCHAR(255),
-	passwordHash VARCHAR(255),
+	passwordHash VARCHAR(512),
 	salt VARCHAR(255),
 	dateOfBirth DATE,
 	genderId INTEGER REFERENCES scoop.genders(genderId),
 	divisionId INTEGER REFERENCES scoop.divisions(divisionId),
 	buildingId INTEGER REFERENCES scoop.buildings(buildingId),
+	positionId INTEGER REFERENCES scoop.positions(positionId),
 	profileImage bytea,
 	address VARCHAR(255),
 	city VARCHAR(255),
