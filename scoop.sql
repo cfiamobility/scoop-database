@@ -121,6 +121,8 @@ CREATE TABLE scoop.searchHistory (
 
 CREATE TABLE scoop.postCommentReply (
     activityId uuid DEFAULT uuid_generate_v4(),
+  	userid uuid REFERENCES scoop.users(userid),
+  	activityType INTEGER NOT NULL, 
     postTitle VARCHAR (255),
     postText VARCHAR(255),
     postImage bytea,
@@ -129,6 +131,18 @@ CREATE TABLE scoop.postCommentReply (
 	modifiedDate TIMESTAMPTZ DEFAULT NOW(),
 
     PRIMARY KEY (activityId)
+);
+
+CREATE TABLE scoop.likes (
+    likeId uuid DEFAULT uuid_generate_v4(),
+    activityId uuid REFERENCES scoop.postCommentReply(activityId),
+  	userid uuid REFERENCES scoop.users(userid),
+    likeType INTEGER,
+    activeStatus INTEGER DEFAULT 1,
+    createdDate TIMESTAMPTZ DEFAULT NOW(),
+	modifiedDate TIMESTAMPTZ DEFAULT NOW(),
+
+    PRIMARY KEY (likeId)
 );
 
 CREATE TABLE scoop.reportTable (
@@ -148,19 +162,6 @@ CREATE TABLE scoop.savedPosts (
 	activeStatus INTEGER DEFAULT 1,
 
     PRIMARY KEY (activityId, userId)
-);
-
-
-
-CREATE TABLE scoop.likes (
-    likeId uuid DEFAULT uuid_generate_v4(),
-    activityId uuid REFERENCES scoop.postCommentReply(activityId),
-    likeType INTEGER,
-    activeStatus INTEGER DEFAULT 1,
-    createdDate TIMESTAMPTZ DEFAULT NOW(),
-	modifiedDate TIMESTAMPTZ DEFAULT NOW(),
-
-    PRIMARY KEY (likeId)
 );
 
 /* This table contains all the notifications that are sent/received */
