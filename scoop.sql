@@ -178,3 +178,14 @@ CREATE TABLE scoop.notifications (
 );
 
 /*------------------------------------------------------------END OF TABLES------------------------------------------------------------*/
+
+/*---------------------ALTERATIONS----------------------*/
+-- From Maxwell: need ActivityID for postcommentreply to reference post being commented or comment being replied
+ALTER TABLE scoop.postcommentreply ADD otherActivityID uuid REFERENCES scoop.postcommentreply(activityID)
+
+-- From Timmy: delete city, province, address off usertable (personally wouldnt want home address in a public directInfo)
+ALTER TABLE scoop.users DROP address;
+ALTER TABLE scoop.users DROP city;
+ALTER TABLE scoop.users DROP province;
+ALTER TABLE scoop.users DROP postalcode;
+
