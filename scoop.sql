@@ -121,6 +121,8 @@ CREATE TABLE scoop.searchHistory (
 
 CREATE TABLE scoop.postCommentReply (
     activityId uuid DEFAULT uuid_generate_v4(),
+  	userid uuid REFERENCES scoop.users(userid),
+  	activityType INTEGER NOT NULL, 
     postTitle VARCHAR (255),
     postText VARCHAR(255),
     postImage bytea,
@@ -129,6 +131,18 @@ CREATE TABLE scoop.postCommentReply (
 	modifiedDate TIMESTAMPTZ DEFAULT NOW(),
 
     PRIMARY KEY (activityId)
+);
+
+CREATE TABLE scoop.likes (
+    likeId uuid DEFAULT uuid_generate_v4(),
+    activityId uuid REFERENCES scoop.postCommentReply(activityId),
+  	userid uuid REFERENCES scoop.users(userid),
+    likeType INTEGER,
+    activeStatus INTEGER DEFAULT 1,
+    createdDate TIMESTAMPTZ DEFAULT NOW(),
+	modifiedDate TIMESTAMPTZ DEFAULT NOW(),
+
+    PRIMARY KEY (likeId)
 );
 
 CREATE TABLE scoop.reportTable (
@@ -150,19 +164,6 @@ CREATE TABLE scoop.savedPosts (
     PRIMARY KEY (activityId, userId)
 );
 
-
-
-CREATE TABLE scoop.likes (
-    likeId uuid DEFAULT uuid_generate_v4(),
-    activityId uuid REFERENCES scoop.postCommentReply(activityId),
-    likeType INTEGER,
-    activeStatus INTEGER DEFAULT 1,
-    createdDate TIMESTAMPTZ DEFAULT NOW(),
-	modifiedDate TIMESTAMPTZ DEFAULT NOW(),
-
-    PRIMARY KEY (likeId)
-);
-
 /* This table contains all the notifications that are sent/received */
 CREATE TABLE scoop.notifications (
 	notificationId uuid DEFAULT uuid_generate_v4(),
@@ -177,3 +178,14 @@ CREATE TABLE scoop.notifications (
 );
 
 /*------------------------------------------------------------END OF TABLES------------------------------------------------------------*/
+
+/*---------------------ALTERATIONS----------------------*/
+-- From Maxwell: need ActivityID for postcommentreply to reference post being commented or comment being replied
+ALTER TABLE scoop.postcommentreply ADD otherActivityID uuid REFERENCES scoop.postcommentreply(activityID)
+
+-- From Timmy: delete city, province, address off usertable (personally wouldnt want home address in a public directInfo)
+ALTER TABLE scoop.users DROP address;
+ALTER TABLE scoop.users DROP city;
+ALTER TABLE scoop.users DROP province;
+ALTER TABLE scoop.users DROP postalcode;
+
