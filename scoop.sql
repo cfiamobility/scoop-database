@@ -196,6 +196,8 @@ ALTER TABLE scoop.socialmedia ADD socialmediasymbol INTEGER;
 INSERT INTO scoop.socialmedia (socialmedianame, socialmediasymbol) VALUES ('Facebook', -700065);
 INSERT INTO scoop.socialmedia (socialmedianame, socialmediasymbol) VALUES ('Instagram', -700003);
 INSERT INTO scoop.socialmedia (socialmedianame, socialmediasymbol) VALUES ('LinkedIn', -700125);
+INSERT INTO scoop.socialmedia (socialmedianame, socialmediasymbol) VALUES ('LinkedIn', -700008);
+
 
 
 
