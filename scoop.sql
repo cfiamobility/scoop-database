@@ -198,6 +198,10 @@ INSERT INTO scoop.socialmedia (socialmedianame, socialmediasymbol) VALUES ('Inst
 INSERT INTO scoop.socialmedia (socialmedianame, socialmediasymbol) VALUES ('LinkedIn', -700125);
 INSERT INTO scoop.socialmedia (socialmedianame, socialmediasymbol) VALUES ('Twitter', -700008);
 
+-- Change postimage type in postcommentreply. Using image path now instead of bytearray
+ALTER TABLE scoop.postcommentreply DROP postimage;
+ALTER TABLE scoop.postcommentreply ADD postimagepath VARCHAR(255); 
+
 
 
 
