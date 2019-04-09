@@ -189,7 +189,7 @@ ALTER TABLE scoop.users DROP city;
 ALTER TABLE scoop.users DROP province;
 ALTER TABLE scoop.users DROP postalcode;
 
--- TEMPORARY FIX: replace symbol type to int which holds teh drawable id of the symbol (i.e., R.drawable.facebook = 1)
+-- TEMPORARY FIX: replace symbol type to int which holds teh drawable id of the symbol (i.e., R.drawable.facebook = -700065)
 ALTER TABLE scoop.socialmedia DROP socialmediasymbol;
 ALTER TABLE scoop.socialmedia ADD socialmediasymbol INTEGER;
 
