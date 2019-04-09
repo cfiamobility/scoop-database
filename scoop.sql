@@ -202,6 +202,9 @@ INSERT INTO scoop.socialmedia (socialmedianame, socialmediasymbol) VALUES ('Twit
 ALTER TABLE scoop.postcommentreply DROP postimage;
 ALTER TABLE scoop.postcommentreply ADD postimagepath VARCHAR(255); 
 
+-- Renaming as replies were removed (for now)
+ALTER TABLE scoop.postcommentreply RENAME TO postcomment;
+
 
 
 
