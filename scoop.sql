@@ -205,7 +205,9 @@ ALTER TABLE scoop.postcommentreply ADD postimagepath VARCHAR(255);
 -- Renaming as replies were removed (for now)
 ALTER TABLE scoop.postcommentreply RENAME TO postcomment;
 
-ALTER TABLE scoop.postcomment ADD activityreference REFERENCES scoop.postcomment(activityid)'
+ALTER TABLE scoop.postcomment ADD activityreference uuid REFERENCES scoop.postcomment(activityid);
+
+ALTER TABLE scoop.likes ADD userid uuid REFERENCES scoop.users(userid);
 
 
 
