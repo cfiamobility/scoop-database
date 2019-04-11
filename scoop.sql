@@ -205,10 +205,13 @@ ALTER TABLE scoop.postcommentreply ADD postimagepath VARCHAR(255);
 -- Renaming as replies were removed (for now)
 ALTER TABLE scoop.postcommentreply RENAME TO postcomment;
 
-ALTER TABLE scoop.postcomment ADD activityreference uuid REFERENCES scoop.postcomment(activityid);
+--alters name of otheractivity id
+ALTER TABLE scoop.postcomment RENAME COLUMN otherActivityID TO activityreference uuid REFERENCES scoop.postcomment(activityid);
 
+--adds a reference to the user id for likes
 ALTER TABLE scoop.likes ADD userid uuid REFERENCES scoop.users(userid);
 
+--creates a enum type of which feed you're posting from 
 CREATE TYPE feedtype AS ENUM('official', 'community');
 ALTER TABLE scoop.postcomment ADD COLUMN feed feedtype;
 
