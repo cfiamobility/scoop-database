@@ -206,7 +206,7 @@ ALTER TABLE scoop.postcommentreply ADD postimagepath VARCHAR(255);
 ALTER TABLE scoop.postcommentreply RENAME TO postcomment;
 
 --alters name of otheractivity id
-ALTER TABLE scoop.postcomment RENAME COLUMN otherActivityID TO activityreference uuid REFERENCES scoop.postcomment(activityid);
+ALTER TABLE scoop.postcomment RENAME COLUMN otherActivityID TO activityreference uuid;
 
 --adds a reference to the user id for likes
 ALTER TABLE scoop.likes ADD userid uuid REFERENCES scoop.users(userid);
