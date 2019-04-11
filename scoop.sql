@@ -189,14 +189,9 @@ ALTER TABLE scoop.users DROP city;
 ALTER TABLE scoop.users DROP province;
 ALTER TABLE scoop.users DROP postalcode;
 
--- TEMPORARY FIX: replace symbol type to int which holds teh drawable id of the symbol (i.e., R.drawable.facebook = -700065)
+-- Dont need
 ALTER TABLE scoop.socialmedia DROP socialmediasymbol;
-ALTER TABLE scoop.socialmedia ADD socialmediasymbol INTEGER;
 
-INSERT INTO scoop.socialmedia (socialmedianame, socialmediasymbol) VALUES ('Facebook', -700065);
-INSERT INTO scoop.socialmedia (socialmedianame, socialmediasymbol) VALUES ('Instagram', -700003);
-INSERT INTO scoop.socialmedia (socialmedianame, socialmediasymbol) VALUES ('LinkedIn', -700125);
-INSERT INTO scoop.socialmedia (socialmedianame, socialmediasymbol) VALUES ('Twitter', -700008);
 
 -- Change postimage type in postcommentreply. Using image path now instead of bytearray
 ALTER TABLE scoop.postcommentreply DROP postimage;
@@ -206,7 +201,7 @@ ALTER TABLE scoop.postcommentreply ADD postimagepath VARCHAR(255);
 ALTER TABLE scoop.postcommentreply RENAME TO postcomment;
 
 --alters name of otheractivity id
-ALTER TABLE scoop.postcomment RENAME COLUMN otherActivityID TO activityreference uuid;
+ALTER TABLE scoop.postcomment RENAME COLUMN otherActivityID TO activityreference;
 
 
 --creates a enum type of which feed you're posting from 
