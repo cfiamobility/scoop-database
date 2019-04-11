@@ -209,6 +209,9 @@ ALTER TABLE scoop.postcomment ADD activityreference uuid REFERENCES scoop.postco
 
 ALTER TABLE scoop.likes ADD userid uuid REFERENCES scoop.users(userid);
 
+CREATE TYPE feedtype AS ENUM('official', 'community');
+ALTER TABLE scoop.postcomment ADD COLUMN feed feedtype;
+
 
 
 
