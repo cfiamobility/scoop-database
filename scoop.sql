@@ -208,6 +208,9 @@ ALTER TABLE scoop.postcomment RENAME COLUMN otherActivityID TO activityreference
 CREATE TYPE feedtype AS ENUM('official', 'community');
 ALTER TABLE scoop.postcomment ADD COLUMN feed feedtype;
 
+--Y'all welcome
+--sequelize-auto -h localhost -d postgres -u postgres -x 123456 -p 5432 --dialect postgres -o './models/ -s scoop -t buildings, divisions,genders, likes, notifications, positions, postcomment, reporttable, savedposts, searchhistory, socialmedia, users, usersocial
+
 
 
 
