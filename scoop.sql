@@ -168,7 +168,7 @@ CREATE TABLE scoop.savedPosts (
 CREATE TABLE scoop.notifications (
 	notificationId uuid DEFAULT uuid_generate_v4(),
 	userId uuid REFERENCES scoop.users(userId),
-	activivityId uuid REFERENCES scoop.postCommentReply(activityId),
+	activityId uuid REFERENCES scoop.postCommentReply(activityId),
     likeId uuid REFERENCES scoop.likes(likeId),
 	activeStatus INTEGER DEFAULT 1,
     createdDate TIMESTAMPTZ DEFAULT NOW(),
