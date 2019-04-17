@@ -85,7 +85,7 @@ CREATE TABLE scoop.users(
 	divisionId INTEGER REFERENCES scoop.divisions(divisionId),
 	buildingId INTEGER REFERENCES scoop.buildings(buildingId),
 	positionId INTEGER REFERENCES scoop.positions(positionId),
-	profileImage bytea,
+	profileImage VARCHAR(255),
 	address VARCHAR(255),
 	city VARCHAR(255),
 	province VARCHAR(2),
