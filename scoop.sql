@@ -192,6 +192,11 @@ ALTER TABLE scoop.users DROP postalcode;
 -- Dont need
 ALTER TABLE scoop.socialmedia DROP socialmediasymbol;
 
+INSERT INTO scoop.socialmedia (socialmedianame) VALUES ('Facebook');
+INSERT INTO scoop.socialmedia (socialmedianame) VALUES ('Instagram');
+INSERT INTO scoop.socialmedia (socialmedianame) VALUES ('LinkedIn');
+INSERT INTO scoop.socialmedia (socialmedianame) VALUES ('Twitter');
+
 
 -- Change postimage type in postcommentreply. Using image path now instead of bytearray
 ALTER TABLE scoop.postcommentreply DROP postimage;
