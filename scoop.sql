@@ -221,7 +221,7 @@ CREATE TYPE certifiedtype AS ENUM('yes', 'no');
 ALTER TABLE scoop.users ADD COLUMN officialcertified certifiedtype;
 
 --create an official notifications feed for notifications sent to all users
-CREATE TABLE officialnotifs(
+CREATE TABLE scoop.officialnotifs(
  	notificationId uuid DEFAULT uuid_generate_v4(),
 	activityId uuid REFERENCES scoop.postComment(activityId),
 	activeStatus INTEGER DEFAULT 1,
