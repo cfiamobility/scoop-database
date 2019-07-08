@@ -230,6 +230,9 @@ CREATE TABLE scoop.officialnotifs(
 	
 	PRIMARY KEY (notificationId)
   );
+ 
+ALTER TABLE scoop.savedposts ADD COLUMN createdDate TIMESTAMPTZ DEFAULT NOW();
+
   
 
 
