@@ -230,7 +230,16 @@ CREATE TABLE scoop.officialnotifs(
 	
 	PRIMARY KEY (notificationId)
   );
-  
+ 
+ -- add createddate column to sort savedposts 
+ALTER TABLE scoop.savedposts ADD COLUMN createdDate TIMESTAMPTZ DEFAULT NOW();
 
+-- add body column for details of report
+ALTER TABLE scoop.reporttable ADD COLUMN body VARCHAR(255); 
+-- rename datecreated column to createdDate column to be more consistent with rest of database
+ALTER TABLE scoop.reporttable DROP datecreated;
+ALTER TABLE scoop.reporttable ADD createdDate TIMESTAMPTZ DEFAULT NOW();
+
+  
 
 
