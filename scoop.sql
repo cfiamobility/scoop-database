@@ -240,6 +240,5 @@ ALTER TABLE scoop.reporttable ADD COLUMN body VARCHAR(255);
 ALTER TABLE scoop.reporttable DROP datecreated;
 ALTER TABLE scoop.reporttable ADD createdDate TIMESTAMPTZ DEFAULT NOW();
 
-  
 
 
