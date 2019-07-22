@@ -230,7 +230,6 @@ CREATE TABLE scoop.officialnotifs(
 	
 	PRIMARY KEY (notificationId)
   );
-<<<<<<< HEAD
  
  -- add createddate column to sort savedposts 
 ALTER TABLE scoop.savedposts ADD COLUMN createdDate TIMESTAMPTZ DEFAULT NOW();
@@ -241,10 +240,8 @@ ALTER TABLE scoop.reporttable ADD COLUMN body VARCHAR(255);
 ALTER TABLE scoop.reporttable DROP datecreated;
 ALTER TABLE scoop.reporttable ADD createdDate TIMESTAMPTZ DEFAULT NOW();
 
-=======
   
 --Creates the tsvector column in postcomment for full text searching
 ALTER TABLE scoop.postcomment ADD COLUMN searchtokens TSVECTOR;
->>>>>>> origin/master
 
 
