@@ -244,4 +244,5 @@ ALTER TABLE scoop.reporttable ADD createdDate TIMESTAMPTZ DEFAULT NOW();
 --Creates the tsvector column in postcomment for full text searching
 ALTER TABLE scoop.postcomment ADD COLUMN searchtokens TSVECTOR;
 
-
+ -- add modifieddate column to sort updated savedposts 
+ALTER TABLE scoop.savedposts ADD COLUMN modifiedDate TIMESTAMPTZ DEFAULT NOW();
