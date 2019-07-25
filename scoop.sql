@@ -230,6 +230,9 @@ CREATE TABLE scoop.officialnotifs(
 	
 	PRIMARY KEY (notificationId)
   );
+  
+--Creates the tsvector column in postcomment for full text searching
+ALTER TABLE scoop.postcomment ADD COLUMN searchtokens TSVECTOR;
  
  -- add createddate column to sort savedposts 
 ALTER TABLE scoop.savedposts ADD COLUMN createdDate TIMESTAMPTZ DEFAULT NOW();
