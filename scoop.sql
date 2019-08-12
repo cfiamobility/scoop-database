@@ -59,6 +59,24 @@ CREATE TABLE scoop.buildings(
     PRIMARY KEY (buildingId)
 );
 
+/* This table contains the reasons for closure list for BCP (in French and English)  */
+CREATE TABLE scoop.buildingClosureReasons(
+	reasonId serial,
+	reasonName_en VARCHAR(255),
+	reasonName_fr VARCHAR(255),
+
+    PRIMARY KEY (reasonId)
+);
+
+/* This table contains the action required list for BCP (in French and English)  */
+CREATE TABLE scoop.buildingClosureActions(
+	actionId serial,
+	actionName_en VARCHAR(255),
+	actionName_fr VARCHAR(255),
+
+    PRIMARY KEY (actionId)
+);
+
 /* This table contains a list of genders */
 CREATE TABLE scoop.genders (
 	genderId serial,
@@ -217,7 +235,7 @@ ALTER TABLE scoop.postcomment ADD COLUMN feed feedtype;
 --sequelize-auto -h localhost -d scoopDB -u postgres -x 123456 -p 5432 --dialect postgres -o './models/ -s scoop -t buildings, divisions,genders, likes, notifications, positions, postcomment, reporttable, savedposts, searchhistory, socialmedia, users, usersocial
 
 --Creates an enum type for whether the account is certified to post in official
-CREATE TYPE certifiedtype AS ENUM('yes', 'no');
+CREATE TYPE certifiedtype AS ENUM('bcp', 'none');
 ALTER TABLE scoop.users ADD COLUMN officialcertified certifiedtype;
 
 --create an official notifications feed for notifications sent to all users
