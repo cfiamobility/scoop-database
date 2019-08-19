@@ -116,6 +116,15 @@ CREATE TABLE scoop.users(
     PRIMARY KEY (userId)
 );
 
+/* This table contains settings for all users*/
+CREATE TABLE scoop.usersettings(
+	userid uuid NOT NULL,
+	push_notifications boolean NOT NULL DEFAULT false
+	language integer NOT NULL default 0;
+);
+ALTER TABLE ONLY scoop.usersettings ADD CONSTRAINT users_pkey_settings PRIMARY KEY (userid);
+ALTER TABLE ONLY scoop.usersettings ADD CONSTRAINT users_fkey FOREIGN KEY (userid) REFERENCES scoop.users(userid);
+
 /* This table contains all users' social media links  list of social media */
 CREATE TABLE scoop.userSocial (
 	socialMediaId INTEGER NOT NULL REFERENCES scoop.socialMedia(socialMediaId),
