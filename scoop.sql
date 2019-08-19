@@ -120,7 +120,7 @@ CREATE TABLE scoop.users(
 CREATE TABLE scoop.usersettings(
 	userid uuid NOT NULL,
 	push_notifications boolean NOT NULL DEFAULT false
-	language integer NOT NULL default 0;
+	language integer NOT NULL default 0; /* English = 0, French = 1*/
 );
 ALTER TABLE ONLY scoop.usersettings ADD CONSTRAINT users_pkey_settings PRIMARY KEY (userid);
 ALTER TABLE ONLY scoop.usersettings ADD CONSTRAINT users_fkey FOREIGN KEY (userid) REFERENCES scoop.users(userid);
