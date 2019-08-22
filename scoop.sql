@@ -231,11 +231,11 @@ ALTER TABLE scoop.postcomment RENAME COLUMN otherActivityID TO activityreference
 CREATE TYPE feedtype AS ENUM('official', 'community');
 ALTER TABLE scoop.postcomment ADD COLUMN feed feedtype;
 
---Y'all welcome
---sequelize-auto -h localhost -d scoopDB -u postgres -x 123456 -p 5432 --dialect postgres -o './models/ -s scoop -t buildings, divisions,genders, likes, notifications, positions, postcomment, reporttable, savedposts, searchhistory, socialmedia, users, usersocial
+--Y'all welcome (For middle-tier set up; moved into separate file in middle-tier repo)
+--sequelize-auto -h localhost -d scoopDB -u postgres -x 123456 -p 5432 --dialect postgres -o './models/ -s scoop -t buildings, divisions, genders, likes, notifications, positions, postcomment, reporttable, savedposts, searchhistory, socialmedia, users, usersocial, officialnotifs, usersettings
 
 --Creates an enum type for whether the account is certified to post in official
-CREATE TYPE certifiedtype AS ENUM('bcp', 'none');
+CREATE TYPE certifiedtype AS ENUM('yes', 'no');
 ALTER TABLE scoop.users ADD COLUMN officialcertified certifiedtype;
 
 --create an official notifications feed for notifications sent to all users
